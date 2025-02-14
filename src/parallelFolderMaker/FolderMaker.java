@@ -37,38 +37,24 @@ public class FolderMaker implements Runnable {
             deleteDir(dir);
         } else {
             if (start == 0) {
+                dir.mkdir();
+            }
+
+            for (int i = start; i < end; i++) {
+                dir = new File("./src/parallelFolderMaker/test/" + i);
                 if (dir.mkdir()) {
-                    for (int i = start; i < end; i++) {
-                        dir = new File("./src/parallelFolderMaker/test/" + i);
-                        if (dir.mkdir()) {
-                            File file = new File(String.format("./src/parallelFolderMaker/test/%s/%s", i, i));
-                            try {
-                                FileWriter writer = new FileWriter(file);
-                                for (int j = 0; j <= size; j++) {
-                                    writer.write(j + "\n");
-                                }
-                                writer.close();
-                            } catch (IOException ignored) {
-                            }
+                    File file = new File(String.format("./src/parallelFolderMaker/test/%s/%s", i, i));
+                    try {
+                        FileWriter writer = new FileWriter(file);
+                        for (int j = 0; j <= size; j++) {
+                            writer.write(j + "\n");
                         }
-                    }
-                }
-            } else {
-                for (int i = start; i < end; i++) {
-                    dir = new File("./src/parallelFolderMaker/test/" + i);
-                    if (dir.mkdir()) {
-                        File file = new File(String.format("./src/parallelFolderMaker/test/%s/%s", i, i));
-                        try {
-                            FileWriter writer = new FileWriter(file);
-                            for (int j = 0; j <= size; j++) {
-                                writer.write(j + "\n");
-                            }
-                            writer.close();
-                        } catch (IOException ignored) {
-                        }
+                        writer.close();
+                    } catch (IOException ignored) {
                     }
                 }
             }
+
         }
     }
 }
