@@ -3,7 +3,6 @@ package parallelFolderMaker;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Random;
 
 public class FolderMaker implements Runnable {
 
@@ -12,6 +11,8 @@ public class FolderMaker implements Runnable {
     private int end;
 
     private boolean isDeleting;
+
+    private static boolean created = false;
 
     public FolderMaker(int size, int start, int end, boolean isDeleting) {
         this.size = size;
@@ -36,11 +37,8 @@ public class FolderMaker implements Runnable {
         if (this.isDeleting) {
             deleteDir(dir);
         } else {
-            if (start == 0) {
-                dir.mkdir();
-            }
-
-            for (int i = start; i < end; i++) {
+            created = dir.mkdir();
+            for (int i = start; i <= end; i++) {
                 dir = new File("./src/parallelFolderMaker/test/" + i);
                 if (dir.mkdir()) {
                     File file = new File(String.format("./src/parallelFolderMaker/test/%s/%s", i, i));

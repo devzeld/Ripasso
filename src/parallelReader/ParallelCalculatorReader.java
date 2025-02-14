@@ -1,4 +1,4 @@
-package parallelReading;
+package parallelReader;
 
 import java.io.FileInputStream;
 import java.io.IOException;

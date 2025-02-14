@@ -1,7 +1,6 @@
 package parallelCalculator;
 
 import java.util.ArrayList;
-import java.util.Vector;
 
 public class ParallelCalculator implements Runnable{
     //Abbiamo un file input.txt contenente una certa quantità di numeri interi di cui vogliamo fare la media.

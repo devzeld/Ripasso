@@ -1,6 +1,4 @@
-package parallelReading;
-
-import parallelCalculator.ParallelCalculator;
+package parallelReader;
 
 import java.io.*;
 
